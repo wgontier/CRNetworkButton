@@ -207,7 +207,7 @@ open class CRNetworkButton: UIButton {
     
     
     // MARK: - Public Methods
-    open func resetToReady() {
+    @objc open func resetToReady() {
         crState = .ready
         borderLayer.removeAllAnimations()
         layer.removeAllAnimations()
@@ -231,7 +231,7 @@ open class CRNetworkButton: UIButton {
         setTitleColor(startTitleColor, for: UIControl.State())
     }
     
-    open func startAnimate() {
+    @objc open func startAnimate() {
         if crState != .ready {
             resetToReady()
         }
@@ -239,19 +239,19 @@ open class CRNetworkButton: UIButton {
         crState = .loading
     }
     
-    open func stopAnimate() {
+    @objc open func stopAnimate() {
         guard crState != .finishing && crState != .finished else {
             return
         }
         crState = .finishing
     }
     
-    open func stopByError() {
+    @objc open func stopByError() {
         stopedByError = true
         stopAnimate()
     }
     
-    open func updateProgress(_ progress: CGFloat) {
+    @objc open func updateProgress(_ progress: CGFloat) {
         progressLayer.strokeEnd = progress
     }
     
